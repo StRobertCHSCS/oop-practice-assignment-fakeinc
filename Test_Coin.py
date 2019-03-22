@@ -1,7 +1,9 @@
 import unittest
+
 import Coin as CoinClass
 
-class TestCoin (unittest.TestCase):
+
+class TestCoin(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -20,7 +22,6 @@ class TestCoin (unittest.TestCase):
     def test_flip(self):
         self.coin.flip()
         self.assertIn(self.coin.get_face(), self.values)
-
 
 
 if __name__ == '__main__':
