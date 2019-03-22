@@ -1,8 +1,8 @@
-import logging
+# import # logging
 import math
 
-logging.basicConfig(format="%(levelname) -10s %(module)s:%(lineno)s %(funcName)s %(message)s",
-                    level=logging.DEBUG)
+# # logging.basicConfig(format="%(levelname) -10s %(module)s:%(lineno)s %(funcName)s %(message)s",
+#                     level=# logging.DEBUG)
 
 
 # Define your Fraction class here
@@ -12,7 +12,7 @@ class Fraction:
         # set
         self.numerator = numerator
         self.denominator = denominator
-        logging.debug("{0}/{1}".format(self.numerator, self.denominator))
+        # logging.debug("{0}/{1}".format(self.numerator, self.denominator))
 
         # check
         self.check_if_the_denominator_is_valid()
@@ -30,13 +30,13 @@ class Fraction:
     # declare setters
     def set_numerator(self, new_numerator: int):
         self.numerator = new_numerator
-        logging.debug("{0}/{1}".format(self.numerator, self.denominator))
+        # logging.debug("{0}/{1}".format(self.numerator, self.denominator))
 
     def set_denominator(self, new_denominator: int):
         self.denominator = new_denominator
-        logging.debug("{0}/{1}".format(self.numerator, self.denominator))
+        # logging.debug("{0}/{1}".format(self.numerator, self.denominator))
         self.check_if_the_denominator_is_valid()
-        logging.info("{0}/{1}".format(self.numerator, self.denominator))
+        # logging.info("{0}/{1}".format(self.numerator, self.denominator))
 
     # declare adding and subtracting methods
     def add(self, other_fraction):
@@ -46,20 +46,20 @@ class Fraction:
 
         # get the greatest common factor of the denominators
         gcd_of_denominators = math.gcd(self.denominator, other_fraction.denominator)
-        logging.info(gcd_of_denominators)
+        # logging.info(gcd_of_denominators)
 
         # get the number each numerator should multiply
-        multiplier_for_self = self.denominator // gcd_of_denominators
-        multiplier_for_other_fraction = other_fraction.denominator // gcd_of_denominators
-        logging.info(str(multiplier_for_self) + ", " + str(multiplier_for_other_fraction))
+        multiplier_for_other_fraction = self.denominator // gcd_of_denominators
+        multiplier_for_self = other_fraction.denominator // gcd_of_denominators
+        # logging.info(str(multiplier_for_self) + ", " + str(multiplier_for_other_fraction))
 
         # update result denominator to the lowest common multiple
-        self.denominator = multiplier_for_self * other_fraction.denominator
+        self.denominator = multiplier_for_self * self.denominator
 
         # update result numerator to the sum of two multiplied numerators
         self.numerator = multiplier_for_self * self.numerator + multiplier_for_other_fraction * other_fraction.numerator
 
-        logging.info(str(self))
+        # logging.info(str(self))
 
         # reduce the fraction to lowest terms
         self.__reduce()
@@ -72,20 +72,20 @@ class Fraction:
 
         # get the greatest common factor of the denominators
         gcd_of_denominators = math.gcd(self.denominator, other_fraction.denominator)
-        logging.info(gcd_of_denominators)
+        # logging.info(gcd_of_denominators)
 
         # get the number each numerator should multiply
-        multiplier_for_self = self.denominator // gcd_of_denominators
-        multiplier_for_other_fraction = other_fraction.denominator // gcd_of_denominators
-        logging.info(str(multiplier_for_self) + ", " + str(multiplier_for_other_fraction))
+        multiplier_for_other_fraction = self.denominator // gcd_of_denominators
+        multiplier_for_self = other_fraction.denominator // gcd_of_denominators
+        # logging.info(str(multiplier_for_self) + ", " + str(multiplier_for_other_fraction))
 
         # update result denominator to the lowest common multiple
-        self.denominator = multiplier_for_self * other_fraction.denominator
+        self.denominator = multiplier_for_self * self.denominator
 
         # update result numerator to the sum of two multiplied numerators
         self.numerator = multiplier_for_self * self.numerator - multiplier_for_other_fraction * other_fraction.numerator
 
-        logging.info(str(self))
+        # logging.info(str(self))
 
         # reduce the fraction to lowest terms
         self.__reduce()
@@ -107,7 +107,7 @@ class Fraction:
                         break
                     other_fraction.numerator = other_fraction.numerator // gcd_of_self_denominator_and_other_fraction_numerator
                     self.denominator = self.denominator // gcd_of_self_denominator_and_other_fraction_numerator
-                    logging.info("{0}/{1}".format(self.numerator, self.denominator))
+                    # logging.info("{0}/{1}".format(self.numerator, self.denominator))
 
                 # self denominator and other fraction numerator
                 while True:
@@ -116,13 +116,13 @@ class Fraction:
                     if gcd_of_other_fraction_denominator_and_self_numerator == 1:
                         break
                     self.numerator = self.numerator // gcd_of_other_fraction_denominator_and_self_numerator
-                    logging.info("{0}/{1}".format(self.numerator, self.denominator))
+                    # logging.info("{0}/{1}".format(self.numerator, self.denominator))
                     other_fraction.denominator = other_fraction.denominator // gcd_of_other_fraction_denominator_and_self_numerator
 
             # multiply the left
             self.numerator = self.numerator * other_fraction.numerator
             self.denominator = self.denominator * other_fraction.denominator
-            logging.info("{0}/{1}".format(self.numerator, self.denominator))
+            # logging.info("{0}/{1}".format(self.numerator, self.denominator))
 
     # declare misc useful functions
     def check_if_the_fraction_is_zero(self):
@@ -137,12 +137,12 @@ class Fraction:
         if self.numerator != 0:
             while True:
                 gcd_of_denominator_and_numerator = math.gcd(self.denominator, self.numerator)
-                logging.info(gcd_of_denominator_and_numerator)
+                # logging.info(gcd_of_denominator_and_numerator)
                 if gcd_of_denominator_and_numerator == 1:
                     break
                 self.numerator = self.numerator // gcd_of_denominator_and_numerator
                 self.denominator = self.denominator // gcd_of_denominator_and_numerator
-                logging.info("{0}/{1}".format(self.numerator, self.denominator))
+                # logging.info("{0}/{1}".format(self.numerator, self.denominator))
         else:
             self.denominator = 1
 
